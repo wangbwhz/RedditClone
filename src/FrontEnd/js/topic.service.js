@@ -31,14 +31,30 @@ angular
                     'Content-Type': 'application/x-www-form-urlencoded'
                 }
             };
-            console.log(req);
             return $http(req);
 
         };
-        this.upTopic = function () {
-            return $http.get(__env.baseUrl + "/upTopic");
+        this.upvoteTopic = function (topicId) {
+            var req = {
+                method: 'Get',
+                url: __env.baseUrl + '/upvoteTopic',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                params:{id:topicId}
+               
+            };
+            return $http(req);
         };
-        this.downTopic = function () {
-            return $http.get(__env.baseUrl + "/downTopic");
+        this.downvoteTopic = function (topicId) {
+           var req = {
+                method: 'Get',
+                url: __env.baseUrl + '/downvoteTopic',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+               params:{id:topicId} 
+            };
+            return $http(req);
         };
     });

@@ -11,18 +11,32 @@ angular
 
 function PostCntlr($scope, $http, TopiceService) {
     console.log("PostCntlr Access");
+      $scope.phones = [
+    {
+      name: 'Nexus S',
+      snippet: 'Fast just got faster with Nexus S.'
+    }, {
+      name: 'Motorola XOOM™ with Wi-Fi',
+      snippet: 'The Next, Next Generation tablet.'
+    }, {
+      name: 'MOTOROLA XOOM™',
+      snippet: 'The Next, Next Generation tablet.'
+    }
+  ];
+    
     $scope.getTopics = function () {
         console.log("PostCntlr Access getTopics");
-        console.log($scope.topic);
-        var getAllTopics = TopiceService.getTopics();
-        getAllTopics.then(function (emp) {
-            $scope.topicList = emp.data;
-            console.log($scope.topicList);
+        var topicService = TopiceService.getTopics();
+        topicService.then(function (data) {
+            console.log(data.data);
+            $scope.topics=data.data;
         }, function () {
             alert('Data not found');
         });
 
     }
+    $scope.getTopics();
+
     $scope.addTopic = function () {
         console.log("PostCntlr Access addTopic");
         TopiceService.addTopic($scope.topic).then(function successCallback(response) {
@@ -35,14 +49,27 @@ function PostCntlr($scope, $http, TopiceService) {
 
 
     }
-    $scope.upvoteTopic = function () {
-        console.log("PostCntlr Access DownVote");
-        console.log($scope.topic);
+    $scope.upvoteTopic = function (topicId) {
+        console.log("PostCntlr Access upvoteTopic "+topicId);
+        TopiceService.upvoteTopic(topicId).then(function successCallback(response) {
+            // this callback will be called asynchronously
+            // when the response is available
+        }, function errorCallback(response) {
+            // called asynchronously if an error occurs
+            // or server returns response with an error status.
+        });
 
     }
-    $scope.downvoteTopic = function () {
-        console.log("PostCntlr Access UpVote");
-        console.log($scope.topic);
+    $scope.downvoteTopic = function (topicId) {
+       console.log("PostCntlr Access downvoteTopic "+topicId);
+        TopiceService.downvoteTopic(topicId).then(function successCallback(response) {
+            // this callback will be called asynchronously
+            // when the response is available
+        }, function errorCallback(response) {
+            // called asynchronously if an error occurs
+            // or server returns response with an error status.
+        });
+
 
     }
 

@@ -40,13 +40,11 @@ app.post('/addTopic', function (req, res) {
 
 
 })
-app.get('/upTopic', function (req, res) {
+app.get('/upvoteTopic', function (req, res) {
 
-    res.header("Access-Control-Allow-Origin", "*");
     res.send('upTopic');
 })
-app.get('/downTopic', function (req, res) {
-    res.header("Access-Control-Allow-Origin", "*");
+app.get('/downvoteTopic', function (req, res) {
 
     res.send('upTopic');
 })

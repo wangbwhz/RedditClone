@@ -9,23 +9,22 @@
     <script src="js/topic.service.js"></script>
     <script src="js/env.js"></script>
     <link rel="stylesheet" href="css/index.css">
+    <meta http-equiv="Cache-control" content="no-cache">
 </head>
 
 <body ng-app="app">
-
-    <div class="container">
-        <li class="list-group-item">
-            <i class="glyphicon glyphicon-chevron-up" ng-click="upvote()"></i>
-            <span class="label label-primary">{{ votes }}</span>
-            <i class="glyphicon glyphicon-chevron-down" ng-click="downvote()"></i>
-            <a>{{ post.title }}</a>
-        </li>
+    <div class="container" ng-controller="PostCntlr">
         <div clss="row">
+            <h1 class="text-center">Digg / Reddit clone with upvote and downvotes</h1>
+
+            <li class="list-group-item" ng-repeat="topic in topics">
+                <i class="glyphicon glyphicon-chevron-up" ng-click="upvoteTopic(topic.id)"></i>
+                <span class="label label-primary">{{ topic.voteCnt }}</span>
+                <i class="glyphicon glyphicon-chevron-down" ng-click="downvoteTopic(topic.id)"></i>
+                <span>{{ topic.content }}</span>
+            </li>
             <div class="col-md-12">
-
-
-
-                <form ng-controller="PostCntlr" ng-submit="addTopic()">
+                <form ng-submit="addTopic()">
                     <div class="form-group">
                         <label for="post">Add Post:</label>
                         <textarea class="form-control" rows="5" maxlength="255" ng-model="topic"></textarea>
