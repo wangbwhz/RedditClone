@@ -1,3 +1,6 @@
+/*
+Provide service for data transmisision between front end and backend
+*/
 angular
     .module('app')
     .service("TopiceService", function ($http) {

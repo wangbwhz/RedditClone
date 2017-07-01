@@ -1,3 +1,10 @@
+/*
+Controller for the topic 
+1. Add Topic
+2. Get Topic List
+3. Upvote the topic
+4. Downvote the topic
+*/
 angular
     .module('app')
     .controller('PostCntlr', PostCntlr);

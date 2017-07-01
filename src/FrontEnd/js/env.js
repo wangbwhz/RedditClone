@@ -1,3 +1,6 @@
+/*
+Environment config setting
+*/
 (function (window) {
   window.__env = window.__env || {};
 

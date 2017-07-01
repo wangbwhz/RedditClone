@@ -1,3 +1,6 @@
+/*
+Index File for the backend 
+*/
 var Topic = require("./topic.js");
 var topicLst=[];
 
