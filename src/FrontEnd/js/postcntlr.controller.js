@@ -31,7 +31,7 @@ function PostCntlr($scope, $http, TopiceService) {
             console.log(data.data);
             $scope.topics=data.data;
         }, function () {
-            alert('Data not found');
+            alert("Dont have topic");
         });
 
     }
@@ -42,6 +42,9 @@ function PostCntlr($scope, $http, TopiceService) {
         TopiceService.addTopic($scope.topic).then(function successCallback(response) {
             // this callback will be called asynchronously
             // when the response is available
+            console.log("Successfully add topic");
+            console.log(response.data);
+            $scope.topics=response.data;
         }, function errorCallback(response) {
             // called asynchronously if an error occurs
             // or server returns response with an error status.

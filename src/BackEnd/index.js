@@ -35,6 +35,8 @@ app.post('/addTopic', function (req, res) {
         value = JSON.parse(body); // request is finished receiving data, parse it
         var topic = new Topic(value.topic);
         topicLst.push(topic);
+        JSON.stringify(topicLst);
+        res.send(topicLst);
     });
 
 
