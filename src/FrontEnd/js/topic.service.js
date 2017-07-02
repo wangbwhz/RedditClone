@@ -19,7 +19,6 @@ angular
                     topic
                 }
             };
-            console.log(req);
             return $http(req);
 
         };

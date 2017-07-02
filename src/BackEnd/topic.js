@@ -7,7 +7,7 @@ function Topic(content, voteCnt) {
     //use the lock to prevent simulutaneous modification of the voteCont(vote count)
     var AsyncLock = require('async-lock');
     var lock = new AsyncLock();
-
+    this.voteCnt = 0;
     this.id = nextId++;
     this.content = content;
     if (voteCnt === undefined) { // parameter was omitted in call}
@@ -15,22 +15,14 @@ function Topic(content, voteCnt) {
     } else {
         this.voteCnt = voteCnt;
     }
-    this.upVote = function () {
-        lock.acquire("key", function (done) {
-            this.voteCnt++;
-            setTimeout(function () {
-                done();
-            }, 3000)
-        }, function (err, ret) {}, {});
-    };
-    this.downVote = function () {
-        lock.acquire("key", function (done) {
-            this.voteCnt--;
-            setTimeout(function () {
-                done();
-            }, 3000)
-        }, function (err, ret) {}, {});
-    };
+
+    this.upvoteTopic = function () {
+        this.voteCnt++;
+    }
+    this.downvoteTopic = function () {
+        if(this.voteCnt>0)
+        this.voteCnt--;
+    }
 }
 
 //method.getContent = function() {

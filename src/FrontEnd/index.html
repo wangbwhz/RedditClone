@@ -17,7 +17,7 @@
         <div clss="row">
             <h1 class="text-center">Digg / Reddit clone with upvote and downvotes</h1>
 
-            <li class="list-group-item" ng-repeat="topic in topics">
+            <li class="list-group-item" ng-repeat="topic in topics track by topic.id">
                 <i class="glyphicon glyphicon-chevron-up" ng-click="upvoteTopic(topic.id)"></i>
                 <span class="label label-primary">{{ topic.voteCnt }}</span>
                 <i class="glyphicon glyphicon-chevron-down" ng-click="downvoteTopic(topic.id)"></i>

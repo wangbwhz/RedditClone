@@ -3,6 +3,7 @@ Index File for the backend
 */
 var Topic = require("./topic.js");
 var topicLst = [];
+var url = require('url');
 
 const express = require('express')
 const app = express()
@@ -44,11 +45,16 @@ app.post('/addTopic', function (req, res) {
 })
 app.get('/upvoteTopic', function (req, res) {
 
-    res.send('upTopic');
+    var id = url.parse(req.url, true).query.id;
+    topicLst[id-1].upvoteTopic();
+    JSON.stringify(topicLst);
+    res.send(topicLst);
 })
 app.get('/downvoteTopic', function (req, res) {
-
-    res.send('upTopic');
+    var id = url.parse(req.url, true).query.id;
+    topicLst[id-1].downvoteTopic();
+    JSON.stringify(topicLst);
+    res.send(topicLst);
 })
 
 
