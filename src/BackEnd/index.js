@@ -1,9 +1,8 @@
 /*
 Index File for the backend 
 */
-var Topic = require("./topic.js");
-var topicLst = [];
-var url = require('url');
+
+var topicCntlr = require('./controllers/topic.js');
 
 const express = require('express')
 const app = express()
@@ -21,41 +20,8 @@ app.use(function (req, res, next) {
     // Pass to next layer of middleware
     next();
 });
+topicCntlr.controller(app);
 
-app.get('/getTopics', function (req, res) {
-    JSON.stringify(topicLst);
-    res.send(topicLst);
-})
-
-app.post('/addTopic', function (req, res) {
-    var body = "";
-    req.on('data', function (data) {
-        body += data.toString(); // convert data to string and append it to request body
-    });
-    req.on('end', function () {
-        value = JSON.parse(body); // request is finished receiving data, parse it
-        var topic = new Topic(value.topic);
-        topicLst.push(topic);
-        JSON.stringify(topicLst);
-        res.send(topicLst);
-    });
-
-
-
-})
-app.get('/upvoteTopic', function (req, res) {
-
-    var id = url.parse(req.url, true).query.id;
-    topicLst[id-1].upvoteTopic();
-    JSON.stringify(topicLst);
-    res.send(topicLst);
-})
-app.get('/downvoteTopic', function (req, res) {
-    var id = url.parse(req.url, true).query.id;
-    topicLst[id-1].downvoteTopic();
-    JSON.stringify(topicLst);
-    res.send(topicLst);
-})
 
 
 
