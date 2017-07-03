@@ -1,9 +1,9 @@
 var Topic = require("./topic.js");
 /*
-Topic data structure defination
+Topics data structure defination
 */
 
-var topicLst = [];
+var topicLst = [];//in memory data storage for topic related data.
 
 function Topics() {
 }

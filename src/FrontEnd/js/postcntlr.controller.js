@@ -11,18 +11,20 @@ angular
 
 function PostCntlr($scope, $http, TopiceService) {
     console.log("PostCntlr Access");
+    
     $scope.getTopics = function () {
         console.log("PostCntlr Access getTopics");
         var topicService = TopiceService.getTopics();
         topicService.then(function (response) {
             $scope.topics = response.data;
+            console.log(response.data);
+
         }, function () {
-            alert("Dont have topic");
+            console.log("Dont have topic");
         });
 
     }
     $scope.getTopics();
-
     $scope.addTopic = function () {
         console.log("PostCntlr Access addTopic");
         TopiceService.addTopic($scope.topic).then(function successCallback(response) {
