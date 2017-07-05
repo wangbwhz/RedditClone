@@ -19,9 +19,9 @@
 
             <li class="list-group-item" ng-repeat="topic in topics track by topic.id">
                 <!--track by topic.id-->
-                <i class="glyphicon glyphicon-chevron-up" ng-click="upvoteTopic(topic.id)"></i>
+                <i class="glyphicon glyphicon-chevron-up" ng-click="upvoteTopic(topic.id,$index)"></i>
                 <span class="label label-primary">{{ topic.voteCnt }}</span>
-                <i class="glyphicon glyphicon-chevron-down" ng-click="downvoteTopic(topic.id)"></i>
+                <i class="glyphicon glyphicon-chevron-down" ng-click="downvoteTopic(topic.id,$index)"></i>
                 <span>{{ topic.content }}</span>
             </li>
             <div class="col-md-12">

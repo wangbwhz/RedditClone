@@ -10,6 +10,7 @@ User only can see the count which is subtraction of count of the upvote and coun
 Once user click on the upvote/downvote arrow, user only see the change of the count locally. The page will not be reloaded.
 Minimum count(upvote count-downvote count) displayed on the screen is 0
 When user submits the new topic, the page will redirect to the home page
+Empty topic is not allowed to submit
 
 Function of the application:
 Add Topic: Fill in the form and click on the submit button
@@ -19,6 +20,13 @@ Next page: Click on the next button
 Previous Page: Click on the previous button
 
 Installation Tutorial:
-Option 1: Backend and front files are put on the same server
-Upload all the files to the server
-Edit 
+Option 1 - Backend and frontend files are located on the same server
+1.Upload all the files to the server
+2.Edit index.js, update the port
+3.Edit FrontEnd/js/env.js, updatethe base link 
+Option 2 - Backend and frontend files are located on the different server
+1.Upload the Frontend files to one server
+2.Upload the Backend files, index.js to another server
+3.Edit index.js, remove the code of frontend part
+4.Edit index.js, update the port
+5.Edit FrontEnd/js/env.js, updatethe base link 

@@ -44,7 +44,7 @@ function PostCntlr($scope, $http, TopiceService, $window, $log) {
 
 
     }
-    $scope.upvoteTopic = function (topicId) {
+    $scope.upvoteTopic = function (topicId,index) {
         var currentPage = $scope.currentPage;
         $log.debug("PostCntlr Access upvoteTopic " + topicId + " @page " + currentPage);
 
@@ -56,7 +56,7 @@ function PostCntlr($scope, $http, TopiceService, $window, $log) {
             //            $scope.currentPage = currentPage;
             //            $scope.lastPage = response.data.lastPage;
             //2.method to display the original page with the update on the topic count(same as reddit)
-            $scope.topics[topicId - 1].voteCnt += 1;
+            $scope.topics[index].voteCnt += 1;
 
         }, function errorCallback(response) {
             // called asynchronously if an error occurs
@@ -65,7 +65,7 @@ function PostCntlr($scope, $http, TopiceService, $window, $log) {
         });
 
     }
-    $scope.downvoteTopic = function (topicId) {
+    $scope.downvoteTopic = function (topicId,index) {
         var currentPage = $scope.currentPage;
         $log.debug("PostCntlr Access downvoteTopic " + topicId + " @page " + currentPage);
         TopiceService.downvoteTopic(topicId, currentPage).then(function successCallback(response) {
@@ -77,8 +77,8 @@ function PostCntlr($scope, $http, TopiceService, $window, $log) {
             //            $scope.currentPage = currentPage;
             //            $scope.lastPage = response.data.lastPage;
             //2.method to display the original page with the update on the topic count(same as reddit)
-            if($scope.topics[topicId - 1].voteCnt-1>=0){
-            $scope.topics[topicId - 1].voteCnt -= 1;}
+            if($scope.topics[index].voteCnt-1>=0){
+            $scope.topics[index].voteCnt -= 1;}
 
         }, function errorCallback(response) {
             // called asynchronously if an error occurs
