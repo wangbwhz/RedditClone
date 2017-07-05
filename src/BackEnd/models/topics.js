@@ -36,7 +36,7 @@ function getTopicsByPage(pageSize, currentPage, topicLst) {
             endIndex = totalTopics - 1;
         } else {
             endIndex = startIndex + pageSize - 1;
-        }
+        }   
         //        console.log("startIndex"+startIndex);
         //        console.log("endIndex"+endIndex);
 

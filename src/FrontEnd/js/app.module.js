@@ -12,7 +12,7 @@ angular
     .module('app', [])
 //enable or disable log function
     .config(function($logProvider){
-        $logProvider.debugEnabled(true);
+        $logProvider.debugEnabled(false);
     })
     .constant('__env', env)
 

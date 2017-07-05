@@ -10,7 +10,7 @@ angular
 
     .controller('PostCntlr', PostCntlr);
 
-function PostCntlr($scope, $http, TopiceService, $window,$log) {
+function PostCntlr($scope, $http, TopiceService, $window, $log) {
     $log.debug("PostCntlr Access");
     $scope.getTopics = function (currentPage) {
         $log.debug("PostCntlr Access getTopics @ page " + currentPage);
@@ -19,7 +19,7 @@ function PostCntlr($scope, $http, TopiceService, $window,$log) {
             $scope.topics = response.data.topics;
             $scope.currentPage = currentPage;
             $scope.lastPage = response.data.lastPage;
-            
+
             $log.debug("data is " + response.data.topics);
             $log.debug("Current Page is " + response.data.currentPage);
             $log.debug("Last Page is " + response.data.lastPage);
@@ -28,12 +28,12 @@ function PostCntlr($scope, $http, TopiceService, $window,$log) {
         });
 
     }
-    $scope.getTopics(1);//By default load page 1
+    $scope.getTopics(1); //By default load page 1
     $scope.addTopic = function () {
         $log.debug("PostCntlr Access addTopic");
-        if($scope.topic==undefined) {
+        if ($scope.topic == undefined) {
             return false;
-        }      
+        }
         TopiceService.addTopic($scope.topic).then(function successCallback(response) {
             $window.location.href = '/index.html'; //redirect to home page
         }, function errorCallback(response) {
@@ -51,9 +51,13 @@ function PostCntlr($scope, $http, TopiceService, $window,$log) {
         TopiceService.upvoteTopic(topicId, currentPage).then(function successCallback(response) {
             // this callback will be called asynchronously
             // when the response is available
-            $scope.topics = response.data.topics;
-            $scope.currentPage = currentPage;
-            $scope.lastPage = response.data.lastPage;
+            //1.method to display the new order topics
+            //            $scope.topics = response.data.topics;
+            //            $scope.currentPage = currentPage;
+            //            $scope.lastPage = response.data.lastPage;
+            //2.method to display the original page with the update on the topic count(same as reddit)
+            $scope.topics[topicId - 1].voteCnt += 1;
+
         }, function errorCallback(response) {
             // called asynchronously if an error occurs
             // or server returns response with an error status.
@@ -67,9 +71,15 @@ function PostCntlr($scope, $http, TopiceService, $window,$log) {
         TopiceService.downvoteTopic(topicId, currentPage).then(function successCallback(response) {
             // this callback will be called asynchronously
             // when the response is available
-            $scope.topics = response.data.topics;
-            $scope.currentPage = currentPage;
-            $scope.lastPage = response.data.lastPage;
+            //1.method to display the new order topics
+
+            //            $scope.topics = response.data.topics;
+            //            $scope.currentPage = currentPage;
+            //            $scope.lastPage = response.data.lastPage;
+            //2.method to display the original page with the update on the topic count(same as reddit)
+            if($scope.topics[topicId - 1].voteCnt-1>=0){
+            $scope.topics[topicId - 1].voteCnt -= 1;}
+
         }, function errorCallback(response) {
             // called asynchronously if an error occurs
             // or server returns response with an error status.
