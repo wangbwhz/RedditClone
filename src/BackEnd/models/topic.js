@@ -9,16 +9,19 @@ function Topic(content) {
     this.content = content;
     this.upvoteCnt = 0;
     this.downvoteCnt = 0;
-    this.upvoteTopic = function () {
-        this.upvoteCnt++;
-        
-    }
-    this.downvoteTopic = function () {
-        this.downvoteCnt++;
-        
-        
-    }
-    
 }
+Topic.prototype.upvoteTopic = function () {
+    this.upvoteCnt++;
 
+}
+Topic.prototype.downvoteTopic = function () {
+    this.downvoteCnt++;
+}
+Topic.prototype.updateVoteCnt = function () {
+        var voteCnt=this.upvoteCnt-this.downvoteCnt
+        if(voteCnt<0){
+            voteCnt=0;
+        }
+        this.voteCnt=voteCnt;
+}
 module.exports = Topic;
