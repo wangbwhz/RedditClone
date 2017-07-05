@@ -17,27 +17,30 @@
         <div clss="row">
             <h1 class="text-center">Digg / Reddit clone with upvote and downvotes</h1>
 
-            <li class="list-group-item" ng-repeat="topic in topics track by topic.id"><!--track by topic.id-->
+            <li class="list-group-item" ng-repeat="topic in topics track by topic.id">
+                <!--track by topic.id-->
                 <i class="glyphicon glyphicon-chevron-up" ng-click="upvoteTopic(topic.id)"></i>
                 <span class="label label-primary">{{ topic.voteCnt }}</span>
                 <i class="glyphicon glyphicon-chevron-down" ng-click="downvoteTopic(topic.id)"></i>
                 <span>{{ topic.content }}</span>
             </li>
             <div class="col-md-12">
-                 <ul class="pager">
-  <li><a href="#" ng-show="currentPage-1>0" ng-click="getTopics(currentPage-1)">Previous</a></li>
-  <li><a href="#" ng-show="currentPage!=lastPage" ng-click="getTopics(currentPage+1)">Next</a></li>
-</ul>
-                <form ng-submit="addTopic()">
+                <ul class="pager">
+                    <li><a href="#" ng-show="currentPage-1>0" ng-click="getTopics(currentPage-1)">Previous</a></li>
+                    <li><a href="#" ng-show="currentPage!=lastPage" ng-click="getTopics(currentPage+1)">Next</a></li>
+                </ul>
+                <form name="form" ng-submit="addTopic()" novalidate>
                     <div class="form-group">
                         <label for="post">Add Topic:</label>
-                        <textarea class="form-control" rows="5" maxlength="255" ng-model="topic"></textarea>
+                        <textarea class="form-control" rows="5" maxlength="255" ng-model="topic" name="topic" required=""></textarea>
+                    </div>
+                    <div ng-show="form.$submitted">
+                        <span style="color:red" ng-show="form.topic.$error.required|| form.topic.$touched">* Please fill in the topic</span>
                     </div>
                     <button type="submit" class="btn btn-default">Submit</button>
-
                 </form>
             </div>
-           
+
         </div>
     </div>
     <!-- index.html -->

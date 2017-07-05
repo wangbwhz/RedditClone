@@ -44,12 +44,10 @@ function generateJson(topicLst, currentPage, lastPage) {
 
 }
 app.get('/getTopics', function (req, res) {
-    console.log("backend dealing with get topics");
+//    console.log("backend dealing with get topics");
     var currentPage = url.parse(req.url, true).query.currentPage;
     var topicLst = topicCntlr.getTopics(currentPage);
     var lastPage = topicCntlr.getLastPage();
-    console.log(topicLst);
-
     res.send(generateJson(topicLst, currentPage, lastPage));
 })
 // add topic to the list of topics
@@ -62,7 +60,7 @@ app.post('/addTopic', function (req, res) {
         topicContent = JSON.parse(topicJson).topic; // request is finished receiving data, parse it
         var topicLst = topicCntlr.addTopic(topicContent);
 
-        res.sendfile('FrontEnd/index.html', {
+        res.sendFile('FrontEnd/index.html', {
             root: __dirname
         })
     });
@@ -73,7 +71,7 @@ app.get('/upvoteTopic', function (req, res) {
     var currentPage = url.parse(req.url, true).query.currentPage;
     var topicLst = topicCntlr.upvoteTopic(id, currentPage);
     var lastPage = topicCntlr.getLastPage();
-    console.log(generateJson(topicLst, currentPage, lastPage));
+//    console.log(generateJson(topicLst, currentPage, lastPage));
     res.send(generateJson(topicLst, currentPage, lastPage));
 })
 // increase the downvote of the topic by 1

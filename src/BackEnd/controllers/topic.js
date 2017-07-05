@@ -5,8 +5,6 @@ return updated topic list to the user
 */
 var Topics = require("../models/topics.js");
 var topicsModel = new Topics();
-
-
 module.exports.getTopics = function (currentPage) {
     var topicLst = topicsModel.getTopics(currentPage);
     return topicLst;
@@ -20,12 +18,12 @@ module.exports.addTopic = function (topicContent) {
     return topicLst;
 }
 
-module.exports.upvoteTopic = function (id,currentPage) {
-    var topicLst = topicsModel.upvoteTopic(id,currentPage);
+module.exports.upvoteTopic = function (id, currentPage) {
+    var topicLst = topicsModel.upvoteTopic(id, currentPage);
     return topicLst;
 }
 
-module.exports.downvoteTopic = function (id,currentPage) {
-    var topicLst = topicsModel.downvoteTopic(id,currentPage);
+module.exports.downvoteTopic = function (id, currentPage) {
+    var topicLst = topicsModel.downvoteTopic(id, currentPage);
     return topicLst;
 }

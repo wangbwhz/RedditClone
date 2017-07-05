@@ -4,10 +4,6 @@ Provide service for data transmisision between front end and backend
 angular
     .module('app')
     .service("TopiceService", function ($http) {
-//        this.getTopics = function () {
-//            return $http.get(__env.baseUrl + "/getTopics");
-//        };
-
         this.addTopic = function (topic) {
             var req = {
                 method: 'POST',
@@ -29,32 +25,40 @@ angular
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
                 },
-                params:{currentPage:currentPage}
+                params: {
+                    currentPage: currentPage
+                }
 
             };
             return $http(req);
 
         };
-        this.upvoteTopic = function (topicId,currentPage) {
+        this.upvoteTopic = function (topicId, currentPage) {
             var req = {
                 method: 'Get',
                 url: __env.baseUrl + '/upvoteTopic',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
                 },
-                params:{id:topicId,currentPage:currentPage}
-               
+                params: {
+                    id: topicId,
+                    currentPage: currentPage
+                }
+
             };
             return $http(req);
         };
-        this.downvoteTopic = function (topicId,currentPage) {
-           var req = {
+        this.downvoteTopic = function (topicId, currentPage) {
+            var req = {
                 method: 'Get',
                 url: __env.baseUrl + '/downvoteTopic',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
                 },
-               params:{id:topicId,currentPage:currentPage} 
+                params: {
+                    id: topicId,
+                    currentPage: currentPage
+                }
             };
             return $http(req);
         };

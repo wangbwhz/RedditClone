@@ -10,4 +10,9 @@ if (window) {
 }
 angular
     .module('app', [])
-    .constant('__env', env);
+//enable or disable log function
+    .config(function($logProvider){
+        $logProvider.debugEnabled(true);
+    })
+    .constant('__env', env)
+
