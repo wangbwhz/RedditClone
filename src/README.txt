@@ -30,6 +30,9 @@ Option 2 - Backend and frontend files are located on the different server
 3.Edit index.js, remove the code of frontend part
 4.Edit index.js, update the port
 5.Edit FrontEnd/js/env.js, updatethe base link 
+After that:
+1. Install the nodejs modules
+2. Run node index.js
 
 Deployed Link:
 https://gentle-headland-34043.herokuapp.com/index.html#
