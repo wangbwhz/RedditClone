@@ -22,9 +22,10 @@ Previous Page: Click on the previous button<br />
 
 Installation Tutorial:<br />
 Option 1 - Backend and frontend files are located on the same server<br />
-⋅⋅1.Upload all the files to the server<br />
+1.Upload all the files to the server<br />
 2.Edit index.js, update the port<br />
 3.Edit FrontEnd/js/env.js, updatethe base link <br />
+
 Option 2 - Backend and frontend files are located on the different server<br />
 1.Upload the Frontend files to one server<br />
 2.Upload the Backend files, index.js to another server<br />
