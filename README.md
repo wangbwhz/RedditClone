@@ -31,3 +31,7 @@ Option 2 - Backend and frontend files are located on the different server<br />
 3.Edit index.js, remove the code of frontend part<br />
 4.Edit index.js, update the port<br />
 5.Edit FrontEnd/js/env.js, updatethe base link <br />
+
+After that:
+1. Install the nodejs modules
+2. Run node index.js
